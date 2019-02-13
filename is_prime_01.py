@@ -151,7 +151,7 @@ def is_prime_v3(n):
 
 
 # Version 4 of the UDF (substituting a while loop for the for loop in Version 3)
-def prime_check_v4(n):
+def is_prime_v4(n):
     """Return 'prime' if 'n' is prime; 'composite' if 'n' is composite; 'not prime' is 'n' is less than 1."""
     if n < 2:
         return "not prime"
@@ -165,6 +165,25 @@ def prime_check_v4(n):
             return "composite"
         d = d + 2
     return "prime"
+
+
+# Version 5 of the UDF (based off of a very basic property of prime numbers - only prime number can be evenly divided by
+# a number that is within the interval from 1 (included) to itself (included).
+def is_prime_v5(i):
+    # ...
+    # ...
+    k = 0
+    #   ...
+    j = 1
+    while j <= i:
+        if i % j == 0:
+            k = k + 1
+        j = j + 1
+    if k == 2:  # 'if k == 2' is another way to say, 'if i is a prime number', since only prime numbers have just
+        # two chances to make the 'i % j == 0' condition evaluates to True and then reassign 'k' twice - first k = 1
+        # and second k = 2
+        return f"{i} is prime"
+    return f"{i} is not prime"
 
 
 # ========= Test Function =========
