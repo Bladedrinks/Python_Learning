@@ -149,6 +149,23 @@ def is_prime_v3(n):
     return True
 
 
+# Version 4 of the UDF (substituting a while loop for the for loop in Version 3)
+def prime_check_v4(n):
+    """Return 'prime' if 'n' is prime; 'composite' if 'n' is composite; 'not prime' is 'n' is less than 1."""
+    if n < 2:
+        return "not prime"
+    if n == 2:
+        return "prime"
+    if n > 2 and n % 2 == 0:
+        return "composite"
+    d = 3
+    while d <= int(math.sqrt(n)):
+        if n % d == 0:
+            return "composite"
+        d = d + 2
+    return "prime"
+
+
 # ========= Test Function =========
 for n in range(0, 1000000):
     print(n, is_prime_v3(n))
