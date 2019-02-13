@@ -98,7 +98,8 @@ def prime_factors(n):
     # Since n = 1 and the condition of if evaluates to False, the function stops working.
     if n > 2:  # Since the smallest odd prime number is 3, the condition is n > 2, rather than n > 1
         print(n)
-    # Driver Program to test above function
+    # The last if statement is necessary, since the middle for loop can not find out all prime factors of the given
+    # number. The middle for loop can only find out all prime factorizations of the given number.
 
 
 n = int(input("Enter your number: "))
