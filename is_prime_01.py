@@ -1,4 +1,5 @@
-# User-defined function to return all prime factors of a given number.
+# User-defined functions to check if a given number is prime or not.
+# source: https://www.youtube.com/watch?v=2p3kwF04xcA&t=1s
 
 
 import math
