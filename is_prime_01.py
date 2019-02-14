@@ -168,9 +168,12 @@ def is_prime_v4(n):
 
 
 # Version 5 of the UDF (based off of a very basic property of prime numbers - only prime number can be evenly divided by
-# a number that is within the interval from 1 (included) to itself (included).
+# a number that is within the interval from 1 (included) to itself (included). This version was originally part of a
+# larger program which deals with print prime factors of a given number. To see the original program, here is the link:
+# source: https://www.youtube.com/watch?v=2p3kwF04xcA&t=1s
 def is_prime_v5(i):
-    # ...
+    # ...  (The ... (three dots) symbol stands for the part that has been deleted since these deleted parts have nothing
+    #      to do with this very UDF.
     # ...
     k = 0
     #   ...
@@ -187,51 +190,26 @@ def is_prime_v5(i):
 
 
 # ========= Test Function =========
-for n in range(0, 1000000):
-    print(n, is_prime_v3(n))
+for n in range(-21, 21):
+    print(is_prime_v5(n))
 
-# =========     Test    ==========
-# n = int(input("Enter your number to check: "))
-# print(n, is_prime_v3(n))
 
-# # ========= Time Function =========
-# # Figure out how long the version 2 takes to test an extraordinary number (say, 300000000) using the time module and its
-# # time.time() function.
-# # The time.time() function returns the number of seconds have passed since the epoch (the moment where time begins for
-# # unix system, which is January 1st, 1970, 00:00:00). Therefore, in order to calculate the length of time the test
-# # function takes to perform its task, we have to make a subtraction between the length of time when the function
-# # finishes its task (we call it "t1") and the length of time when the function begins its task (we call it "t0").
-# #
-# # Initialize t0.
+# ========= Time Function =========
+# Figure out how long the version 2 takes to test an extraordinary number (say, 300000000) using the time module and its
+# time.time() function.
+# The time.time() function returns the number of seconds have passed since the epoch (the moment where time begins for
+# unix system, which is January 1st, 1970, 00:00:00). Therefore, in order to calculate the length of time the test
+# function takes to perform its task, we have to make a subtraction between the length of time when the function
+# finishes its task (we call it "t1") and the length of time when the function begins its task (we call it "t0").
+#
+# Initialize t0.
 # t0 = time.time()
-# print(f"Seconds passed till t0: {t0}")
+# print(f"t0 = {t0}")
 # # To get t1, we need to test the UDF (user-defined function) immediately after t0 and right before t1. The difference of
 # # t1 - t0 is the length of time the test function takes to complete its task (that is, to return True/False if the given
 # # number is prime/composite.
-# for n in range(2, 100000):
-#     is_prime_v3(n)
-# t1 = time.time()
-# print(f"Seconds passed till t1: {t1}")
-# print(f"\nSeconds that the is_prime_v2 function took to test: {t1 - t0}")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# # ========= Time Function =========
-# t0 = time.time()
-# print(f"t0 = {t0}")
 # for n in range(1, 100000):
-#     is_prime_v2(n)
+#     is_prime_v5(n)
 # t1 = time.time()
 # print(f"t1 = {t1}")
 # print(f"Time required: {t1 - t0}")
