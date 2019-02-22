@@ -9,9 +9,12 @@ a = int(input("Enter your first term: "))
 d = int(input("Enter the common difference: "))
 n = int(input("Enter the number of terms: "))
 ari_seq = []
-counter = 1
-while counter <= n:
-    ari_seq.append(a)
-    a = a + d
-    counter = counter + 1
+counter = 1  # Set 'counter' to 1.
+while counter <= n:  # Enter a while loop that keeps repeating while 'counter' is less than or equal to 'n'.
+    ari_seq.append(a)  # Each time the body of the while loop repeats, add a new term to the list 'ari_seq'.
+    a = a + d  # Each time the body of the while loop repeats, add 'd', the common difference, to 'a', the previous term
+    # , and assign the sum of the previous term and the common difference to 'a', which will be printed out to the
+    # screen in the next time.
+    counter = counter + 1  # Increment 'counter' by 1 so that some moment in the near future the condition of the while
+    # loop will be evaluating to False and we can exit the while loop, otherwise the loop will go on forever.
 print(f"Your arithmetic sequence is: {ari_seq}")
