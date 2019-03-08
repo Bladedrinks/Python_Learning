@@ -29,20 +29,21 @@ def stay_or_quit():
         return "n"
 
 
+winning_score = int(input("Set the winning score before playing: "))
 r = 1  # The number of sub-Rounds of each 'Triple Round'
 tri_r = 1  # The number of Triple Rounds
-p1_v = 0  # The number of victories of 'p1'(the computer player) in each 'Triple Round'
-p2_v = 0  # The number of victories of 'p2'(the human player) in each 'Triple Round'
+computer_wins = 0  # The number of victories of 'p1'(the computer player) in each 'Triple Round'
+human_wins = 0  # The number of victories of 'p2'(the human player) in each 'Triple Round'
 while True:
-    print(f"\n         Computer {p1_v} : {p2_v} You")
+    print(f"\n         Computer {computer_wins} : {human_wins} You")
     # The first player whose number of victories accumulates to 2 in a single 'Triple Round' wins the 'Triple Round'.
-    if p1_v == 2:
+    if computer_wins == winning_score:
         print(f"\n\U0001F62D Computer won Triple Round {tri_r} \U0001F62D \n")
         if stay_or_quit() == "n":
             print("\nThanks for playing. Bye!")
             break
         tri_r += 1
-    elif p2_v == 2:
+    elif human_wins == winning_score:
         print(f"\n\U0001F389 You won Triple Round {tri_r} \U0001F389 \n")
         if stay_or_quit() == "n":
             print("\nThanks for playing. Bye!")
@@ -52,44 +53,44 @@ while True:
     # As soon as one of the two players wins (the number of victories reaches 2),
     # the numbers of victories of the computer and human players are reassigned 0 and the number of sub-rounds of each
     # 'Triple Round' is also reassigned 1 in preparation for the next Triple Round and its sub-rounds.
-    if p1_v == 2 or p2_v == 2:
-        p1_v = 0
-        p2_v = 0
+    if computer_wins == winning_score or human_wins == winning_score:
+        computer_wins = 0
+        human_wins = 0
         r = 1
 
-    print(f"\n\n     ------ Triple Round {tri_r} ({r}) ------")
+    print(f"\n\n\n     ------ Triple Round {tri_r} ({r}) ------")
 
     # Initialize the variable for the human player bt asking the user for their input:
-    p2 = input("\n     You play: ")
+    human = input("\n     You play: ")
 
     # Initialize the variable for the computer player bt using the random.randint() method.
     plays = ["rock", "paper", "scissors"]
     i = randint(0, 2)
-    p1 = plays[i]
-    print(f"Computer play: {p1}")
+    computer = plays[i]
+    print(f"Computer play: {computer}")
 
     # The human player plays one of the three valid options:
-    if p2 == "rock" or p2 == "paper" or p2 == "scissors":
+    if human == "rock" or human == "paper" or human == "scissors":
 
         # (1) Tie/Draw (p1 == p2);
-        if p1 == p2:
+        if computer == human:
             print(f"\nTie!")
 
         # (2) The computer player wins ("Rock crushes scissors", "Paper covers rock" or "Scissors cut paper")
-        elif p1 == "rock" and p2 == "scissors":
+        elif computer == "rock" and human == "scissors":
             print(f"\nComputer won!")
-            p1_v += 1
-        elif p1 == "paper" and p2 == "rock":
+            computer_wins += 1
+        elif computer == "paper" and human == "rock":
             print(f"\nComputer won!")
-            p1_v += 1
-        elif p1 == "scissors" and p2 == "paper":
+            computer_wins += 1
+        elif computer == "scissors" and human == "paper":
             print(f"\nComputer won!")
-            p1_v += 1
+            computer_wins += 1
 
         # (3) The human player wins ("Rock crushes scissors", "Paper covers rock" or "Scissors cut paper")
         else:
             print("\nYou won!")
-            p2_v += 1
+            human_wins += 1
 
         r += 1  # The number of 'Round' is incremented by 1 right after the human player enters a valid input (notice:
         # only 'rock', 'paper' and 'scissors' are valid input) each time. Since invalid input doesn't make a new round,
