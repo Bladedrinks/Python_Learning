@@ -33,12 +33,19 @@ while not(p2_id == "p" or p2_id == "c"):  # p2_id != "p" and p2_id != "c"
                   "\nPlay Mode: 'Person vs Person' or 'Person vs Computer'? (p/c)  ")
 if p2_id == "p":
     p1_name = input("\nHuman player 1, enter your name: ")
+    while len(p1_name) > 10:
+        p1_name = input("\n      * * * User Tip: User name can only contain at most 10 characters. * * *\n"
+                        "\nHuman player 1, enter your name: ")
     p2_name = input("\nHuman player 2, enter your name: ")
+    while len(p2_name) > 10:
+        p2_name = input("\n      * * * User Tip: User name can only contain at most 10 characters. * * *\n"
+                        "\nHuman player 2, enter your name: ")
 else:  # p2_id == "c":
     p1_name = input("\nHuman player, enter your name: ")
+    while len(p1_name) > 10:
+        p1_name = input("\n      * * * User Tip: User name can only contain at most 10 characters. * * *\n"
+                        "\nHuman player, enter your name: ")
     p2_name = "Computer"
-
-
 
 # The game rule should be set before playing.
 # The game rule is basically the common 'best of n' or 'best of n sets' - whoever is first to win half of (n + 1) sets
@@ -49,8 +56,8 @@ else:  # p2_id == "c":
 # If the user want to play 'best of five', he/she should type '5' at the very beginning
 # and whoever is first to win 3 sets (half of 5 + 1 is 3) wins the whole round/game.
 # (Therefore, the 'winning score' is 3, since (5 + 1) / 2 = 3.)
-n = int(input("\nSet the number 'n' in 'best of n' before playing: "))  # Say, n = 5, meaning the user wants to play 'best
-# of five'.
+n = int(input("\nSet the number 'n' in 'best of n' before playing: "))  # Say, n = 5, meaning the user wants to play
+# 'best of five'.
 while n % 2 == 0 or n < 0:
     n = int(input("\n      * * * User Tip: Only odd positive number is valid input. * * *\n"
                   "\nSet the number 'n' in 'best of n' before playing: "))
@@ -59,43 +66,57 @@ winning_score = (n + 1) / 2  # If n = 5, then 'winning score' is 3, since (5 + 1
 
 set = 1  # The number of sets of each round.
 round = 1  # The number of rounds.
-p1_wins = 0  # The number of victories 'p2'(the human player) in each round gets.
-p2_wins = 0  # The number of victories 'p1'(the computer player) in each 'Triple Round'
+p1_wins = 0  # The number of victories which Player 1 in each round gets.
+p2_wins = 0  # The number of victories which Player 2 in each round gets'
 
-while True:
+while True:  # Since the number of rounds is unrestricted, we can keep playing the game as many rounds as we want until
+    # we decide to quit by typing 'quit' or 'q' and break out of the while loop.
     print(f"\n         {p1_name} {p1_wins} : {p2_wins} {p2_name}")
-    # The first player whose number of victories accumulates to 2 in a single 'Triple Round' wins the 'Triple Round'.
-    if p1_wins == winning_score:
+    # Whoever is first to reach the 'winning score' in a single round wins the round.
+    if p1_wins == winning_score:  # 'p1_wins' must go from 0 wins to the 'winning score' to win a single round.
         print(f"\n      \U0001F44D {p1_name} won Round {round} \U0001F44D \n")  # U0001F44D is for 'Thumbs Up' 👍
-        if stay_or_quit() == "n":
+        if stay_or_quit() == "n":  # 'stay_or_quit()' is a UDF which has been defined before.
             print("\n   \U0001F44B Thanks for playing. Bye! \U0001F44B")  # U0001F44B is for 'Goodbye'👋
             break
-        round += 1
-    elif p2_wins == winning_score:
+        round += 1  # The ordinal number of 'round' is incremented by 1 only when either of the two players wins the
+        # previous round.
+    elif p2_wins == winning_score:  # 'p2_wins' must go from 0 wins to the 'winning score' to win a single round.
         print(f"\n       \U0001F389 {p2_name} won Round {round} \U0001F389 \n")  # U0001F389 is for 'Celebration' 🎉
         if stay_or_quit() == "n":
             print("\nThanks for playing. Bye!")
             break
-        round += 1
+        round += 1  # The ordinal number of 'round' is incremented by 1 only when either of the two players wins the
+        # previous round.
 
-    # As soon as one of the two players wins (the number of victories reaches 2),
-    # the numbers of victories of the computer and human players are reassigned 0 and the number of sub-rounds of each
-    # 'Triple Round' is also reassigned 1 in preparation for the next Triple Round and its sub-rounds.
+    # As soon as either of the two players wins a single round, the numbers of victories of the two players are all
+    # reset equal to 0 and the number of sets of each round is also reset equal to 1 in preparation for the counting
+    # thing with the next round and its sets.
     if p2_wins == winning_score or p1_wins == winning_score:
         p2_wins = 0
         p1_wins = 0
         set = 1
 
+    # Show which round and set the game reaches.
     print(f"\n\n\n     ------ Round {round} (Set {set}) ------")
 
-    # Initialize the variable for the human player bt asking the user for their input:
-    p1_play = input(f"\n* * * User Tip: Type 'quit' or 'q' to quit the game. * * * \n{p1_name} plays: ")
+    # For a better typographical appearance, add whitespace characters to the beginning of the player's name whose
+    # length is longer so that the ':' mark can be aligned.
+    if len(p1_name) > len(p2_name):
+        p2_name_temp = " " * (len(p1_name) - len(p2_name)) + p2_name
+        p1_name_temp = p1_name
+    else:  # len(p2_name) >= len(p1_name)
+        p1_name_temp = " " * (len(p2_name) - len(p1_name)) + p1_name
+        p2_name_temp = p2_name
+
+    # Initialize Player 1's play/option:
+    p1_play = input(f"\n* * * User Tip: Type 'quit' or 'q' to quit the game. * * * \n{p1_name_temp} plays: ")
     if p1_play == "quit" or p1_play == "q":
         print("\n   \U0001F44B Thanks for playing. Bye! \U0001F44B")
         break
-
-    if p2_id == "p":
-        p2_play = input(f"\n* * * User Tip: Type 'quit' or 'q' to quit the game. * * * \n{p2_name} plays: ")
+    # Initialize Player 2's play/option (Since Player 2 can be another human player or the computer player,
+    # the initialization is more complicated than Player 1):
+    if p2_id == "p":  # if Player 2 is a person: (when the user chooses the 'Person vs Person' play mode)
+        p2_play = input(f"\n* * * User Tip: Type 'quit' or 'q' to quit the game. * * * \n{p2_name_temp} plays: ")
         if p2_play == "quit" or p2_play == "q":
             print("\n   \U0001F44B Thanks for playing. Bye! \U0001F44B")
             break
@@ -105,7 +126,7 @@ while True:
         # Yield a random integer using the random.randint(a, b) function in order to help us access certain item
         i = randint(0, 2)
         p2_play = plays[i]
-        print(f"{p2_name} plays: {p2_play}")
+        print(f"{p2_name_temp} plays: {p2_play}")
 
     # Any human player plays one of the three valid options:
     if (p1_play == "rock" or p1_play == "paper" or p1_play == "scissors") \
