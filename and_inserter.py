@@ -41,7 +41,14 @@ def insert_and_in(list):
 
     Example:
                         nums = [3, 2, 3, 4, 5, 3, 6, 7, 8, 3, 9, 10, 11, 12, 3, 13, 14]
-             negative index:                                               ... -2  -1
+                      index:   0  1  2  3  4  5  6  7  8  9  10 11  12  13  14 15  16  17(= len(nums))
+             negative index:                                         ...    -3 -2  -1
+                                                                            14 - 17 = -3
+                                                                            15 - 17 = -2
+                                                                            16 - 17 = -1
+                                                                            ...
+                                                                     index - length = negative index
+
     Output:
                                 3, 2, 3, 4, 5, 3, 6, 7, 8, 3, 9, 10, 11, 12, 3, 13 and 14
 
@@ -50,17 +57,12 @@ def insert_and_in(list):
     """
     list_in_str = ""
     for item in list:
-        if list.index(item) - len(list) == -2:
+        if list.index(item) - len(list) == -2:  # The index of an item minus the length of the list is exactly equal to
+            # the item's negative index
             list_in_str += str(item) + " and "
         else:
             list_in_str += str(item) + ", "
     return list_in_str[:-2]
-
-
-# ====== UDF Test ======
-nums = [3, 2, 3, 4, 5, 3, 6, 7, 8, 3, 9, 10, 11, 12, 3, 13, 14]
-#      0  1  2  3  4  5  6  7  8  9  10 11  12  13  14 15  16
-print(insert_and_in(nums))
 
 
 
