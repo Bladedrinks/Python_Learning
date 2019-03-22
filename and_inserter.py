@@ -31,7 +31,7 @@ def insert_and_in(list):
     return list_in_str
 
 
-# Version 2:
+# Version 2 (refactored):
 
 
 def insert_and_in(list):
