@@ -43,6 +43,7 @@ def insert_and_in(list):
                         nums = [3, 2, 3, 4, 5, 3, 6, 7, 8, 3, 9, 10, 11, 12, 3, 13, 14]
                       index:   0  1  2  3  4  5  6  7  8  9  10 11  12  13  14 15  16  17(= len(nums))
              negative index:                                         ...    -3 -2  -1
+             relations between index and negative index:
                                                                             14 - 17 = -3
                                                                             15 - 17 = -2
                                                                             16 - 17 = -1
