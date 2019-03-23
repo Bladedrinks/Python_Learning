@@ -22,5 +22,6 @@ def floor(x):
 
 # ====== UDF Test ======
 for t in range(1, 31):
-    num = uniform(-100, 100)
+    num = uniform(-100, 100)  # In this test program, we use the random.uniform(a, b) function which returns a random
+    # floating point number N such that a <= N <= b for a <= b.
     print(f"Test {t}: The floor of {num} is {floor(num)}")
