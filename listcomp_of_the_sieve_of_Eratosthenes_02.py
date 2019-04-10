@@ -66,7 +66,6 @@ print(f"There are {len(primes)} primes less than or equal to {n}, which are: \n{
 # ====== Program Test ======
 # Prime numbers under 200 are: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83,
 # 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199.
-test_list = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103,
-             107, 109, 113]
+test_list = []  # Before test, you need to pass in a list of integers to the empty list on the right-hand side of the = (assignment) operator.
 if primes == test_list:
     print("You made it! Congrats!")
