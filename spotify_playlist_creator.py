@@ -72,7 +72,9 @@ for key in playlist:
         while True:
             keys = ['TITLE', 'ARTIST', 'ALBUM', 'ADDED TIME', 'DURATION']
             song = dict.fromkeys(keys, None)
-            for song_key in song.keys():
+            for song_key in list(song):  # 'list(song)' can be replaced by 'song.keys()'.
+                # Performing list() on a dictionary returns a list of all the keys in the dictionary.
+                # It is equivalent to list(dict.keys()).
                 if song_key == 'DURATION':
                     song[song_key] = float(input(f"Enter the {ord_form(ord_num)} song's {song_key}: "))
                 elif song_key == 'ARTIST':
@@ -98,6 +100,9 @@ for key in playlist:
         playlist[key] = len(playlist['songs'])
     elif key == 'total_length':
         playlist[key] = math.fsum(playlist['songs'][i]['DURATION'] for i in range(len(playlist['songs'])))
+        # Here, I import the 'math' module and use the math.fsum() method
+        # in order to add floating numbers with exact precision. Inside the math.fsum() method, the parameter doesn't
+        # have to be enclosed by [ ], or the list symbol.
     else:
         playlist[key] = input(f"Your playlist's {key}: ")
 print(f'''\n
@@ -105,9 +110,10 @@ print(f'''\n
         The new playlist:
     -------------------------
 ''')
-for item in playlist.items():  # Notice: The dict.items() method returns a 'dict_items' object, which generates a series
-    # of tuples - (key1, value1), (key2, value2), (key3, value3), etc.
-    if item[0] == 'songs':
+for key, value in playlist.items():  # Notice: The dict.items() method returns a 'dict_items' object, which generates
+    # a series of tuples - (key1, value1), (key2, value2), (key3, value3), etc.
+    if key == 'songs':
+        print(f"\n[ {key} ]")
         ord_num = 1
         for song in playlist['songs']:
             print(f"\n<The {ord_form(ord_num)} song>")
@@ -115,4 +121,4 @@ for item in playlist.items():  # Notice: The dict.items() method returns a 'dict
                 print(f"{song_item[0]}: {song_item[1]}")
             ord_num += 1
     else:
-        print(f"\n[ {item[0]} ]   {item[1]}")
+        print(f"\n[ {key} ]   {value}")
