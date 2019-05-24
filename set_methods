@@ -1,0 +1,10 @@
+>>> set_a = {'Urumchi', 'Tarbaghatay', 'Kashgar', 'Hotan', 'Aqsu'}
+>>> # To add a new item to the 'set_a' set, all we do is: call .add() and then we pass in a piece of data, which, in this case, is a city name, like 'Turpan'.
+... set_a.add('Turpan')
+>>> set_a
+{'Aqsu', 'Hotan', 'Turpan', 'Tarbaghatay', 'Urumchi', 'Kashgar'}
+>>> # 'Turpan' is already in there, so when we try and add it again, Python won't throw an error. 'Turpan' just doesn't show up twice.
+... set_a.add('Turpan')
+>>> set_a
+{'Aqsu', 'Hotan', 'Turpan', 'Tarbaghatay', 'Urumchi', 'Kashgar'}
+>>> # An item that has already been there doesn't show up twice in a set simply because the set doesn't allow duplicate elements showing up on output. Each element in a set is unique and distinct, meaning it appears only once in a set on output.
