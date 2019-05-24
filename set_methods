@@ -17,3 +17,53 @@
 >>> # We can see that the 'set_a' set doesn't change and the .discard('Vancouvre') didn't raise an error.
 ... # So, if you don't want to worry about errors which might be raised by using set.remove(elem), then you can use set.discard(elem), instead. 
 Apparently, set.discard(elem) is much more forgiving compared to set.remove() method, since it allows you to try to remove a non-existent element from a set.
+
+... # To make a copy/duplicate of a set, we call set.copy() method on the given set.
+... another_set = set_a.copy()
+>>> another_set
+{'Turpan', 'Tarbaghatay', 'Aqsu', 'Hotan', 'Kashgar'}
+>>> id(set_a)
+4374282760
+>>> id(another_set)
+4374283880
+>>> # Just like when we use .copy() with lists or with dictionaries, it will make a duplicate of the data. And things look the same but they are not identical, meaning they have different memory address or they are two differnt objects.
+
+>>> # When you want to remove all the elements in a set, try and use set.clear() method.
+... set_a
+{'Aqsu', 'Hotan', 'Turpan', 'Tarbaghatay', 'Kashgar'}
+>>> set_a.clear()
+>>> set_a
+set()
+# As you see, the original set has become an empty one.
+
+>>> set_a = {'Urumchi', 'Tarbaghatay', 'Kashgar', 'Hotan', 'Aqsu'}
+>>> set_a.add('Pezwat')
+>>> set_a
+{'Aqsu', 'Hotan', 'Tarbaghatay', 'Urumchi', 'Pezwat', 'Kashgar'}
+>>> set_a.add('Yeken')
+>>> set_a
+{'Yeken', 'Aqsu', 'Hotan', 'Tarbaghatay', 'Urumchi', 'Pezwat', 'Kashgar'}
+>>> set_a.pop('Yeken')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: pop() takes no arguments (1 given)
+>>> # As you see, set_a.pop() method takes no argument, which is a little bit weird. Why this method takes no argument? The method removes and returns an arbitrary element from the set. 'arbitrary' means which one will be removed depends on Python, not on you. It's totally random.
+... set_a.pop()
+'Yeken'
+>>> set_a.pop()
+'Aqsu'
+>>> set_a.pop()
+'Hotan'
+>>> set_a.pop()
+'Tarbaghatay'
+>>> set_a.pop()
+'Urumchi'
+>>> set_a.pop()
+'Pezwat'
+>>> set_a.pop()
+'Kashgar'
+>>> set_a.pop()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 'pop from an empty set'
+>>> # Note, calling .pop() on an empty set will raise an KeyError.
