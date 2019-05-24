@@ -121,3 +121,16 @@ print(complement_v2(set_S, set_A))
 >>> new_diff = A.difference(B, C)
 >>> new_diff
 {1}
+
+# When we talk about the sets A and B with a universal set S, the difference can be redefined by referring to set S.
+def difference(universal_set, set_A, set_B):
+    """Return the difference of A - B (a set of elements that in A but not in B) in the context of a universal set S."""
+    return set_A & complement_v2(universal_set, set_B)
+
+
+# ====== UDF Test ======
+set_S = {1, 2, 3, 4, 5, 6}
+set_A = {1, 2, 3}
+set_B = {3, 4, 5}
+set_C = {'a', 'd'}
+print(difference(set_S, set_A, set_B))
