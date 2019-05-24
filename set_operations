@@ -163,3 +163,32 @@ Both ways return a set with elements that are in either 'set' or 'other' but not
 {'q', 'x', 'y', 'p', 'f', 'b', 'z', 'e', 'a'}
 >>> A ^ B
 {'q', 'x', 'y', 'p', 'f', 'b', 'z', 'e', 'a'}
+
+# Although sets are mutable (meaning they can be changed IN PLACE), not all operations can mutate a set IN PLACE. For example,
+# The ... |= ... operator as in "set1 |= set2" can mutate 'set1' in place, 
+# but the ... = ... | ... as in "set1 = set1 | set2" can not. 
+# The = sign (the most basic assignment operator) working with the | (union) operator creates a new object and assign it to the variable, 
+and doesn't mutate the object on the left-hand side in place.
+# The += ("add AND") assignment operator mutate the object on the left-hand side.
+# Notice:
+# We call +, -, *, /, %, // "arithmetic operator", while we call +=, -=, *=, /=, %=, //= "assignment operator". 
+The results made by these two kinds of operators look the same, but they works quite differently in terms of memory management.
+>>> a
+{1, 2, 3}
+>>> c
+{2, 4, 6}
+>>> id(a)
+4374429768
+>>> a |= c
+>>> a
+{1, 2, 3, 4, 6}
+>>> id(a)
+4374429768
+>>> a = {1,2,3}
+>>> id(a)
+4374431784
+>>> a = a | c
+>>> a
+{1, 2, 3, 4, 6}
+>>> id(a)
+4374429768
