@@ -8,3 +8,12 @@
 >>> set_a
 {'Aqsu', 'Hotan', 'Turpan', 'Tarbaghatay', 'Urumchi', 'Kashgar'}
 >>> # An item that has already been there doesn't show up twice in a set simply because the set doesn't allow duplicate elements showing up on output. Each element in a set is unique and distinct, meaning it appears only once in a set on output.
+
+>>> # Is there a way of removing element which we are not sure if it is contained in the set without raising an error if it's truly not in the set? Yes, there is a set method satisfying this requirement called set.discard().
+... # For illustration, let's remove 'Vancouvre' which is not contained in the set_a.
+... set_a.discard('Vancouvre')
+>>> set_a
+{'Aqsu', 'Hotan', 'Turpan', 'Tarbaghatay', 'Kashgar'}
+>>> # We can see that the 'set_a' set doesn't change and the .discard('Vancouvre') didn't raise an error.
+... # So, if you don't want to worry about errors which might be raised by using set.remove(elem), then you can use set.discard(elem), instead. 
+Apparently, set.discard(elem) is much more forgiving compared to set.remove() method, since it allows you to try to remove a non-existent element from a set.
