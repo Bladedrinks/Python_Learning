@@ -41,3 +41,61 @@ https://www.probabilitycourse.com/chapter1/1_2_2_set_operations.php
 ... union_of_As = A1.union(A2, A3, A4, A5)
 >>> union_of_As
 {'q', 's', 'x', 'h', 'k', 'm', 'v', 'y', 'r', 'c', 'p', 'b', 'f', 'n', 'g', 't', 'l', 'o', 'i', 'j', 'w', 'e', 'u', 'a', 'd'}
+
+>>> # Intersection of sets A and B is a set where each element is both in A and B.
+>>> # There are two ways of computing the intersection of two or more sets: (a) & (ampersand) and (b) set.intersection(*others) 
+... A1 = {1, 2, 3, 4}
+>>> A2 = {3, 4, 5, 6}
+>>> A3 = {5, 6, 7, 8}
+>>> A1 & A2
+{3, 4}
+>>> A2 & A3
+{5, 6}
+>>> A1 & A2 & A3
+set()
+>>> intersection_set = A1 & A2 & A3
+>>> intersection_set
+set()
+>>> A4 = {3, 4, 9, 10}
+>>> A1 & A2 & A4
+{3, 4}
+>>> 
+>>> A1.intersection(A2, A3)
+set()
+>>> A1.intersection(A2, A4)
+{3, 4}
+
+# Interestingly, there's no handy tool(s) to compute the complement of a set in Python. So we need to create a
+# user-defined function to accomplish this set operation programmatically.
+def complement_v1(universal_set, set_A):
+    """
+    Return the complement of a set A, denoted mathematically by Ac or A¯,
+    which contains all elements that are in the universal set S BUT not in set A.
+    """
+    complement_set = set()
+    for elem in universal_set:
+        if elem not in set_A:
+            complement_set.add(elem)
+    return complement_set
+
+
+def complement_v2(universal_set, set_A):
+    """
+    Return the complement of a set A, denoted mathematically by Ac or A¯,
+    which contains all elements that are in the universal set S BUT not in set A.
+    """
+    return set(elem for elem in universal_set if elem not in set_A)
+
+
+# ====== UDF Test ======
+set_S = {'a', 'b', 'c', 'd'}
+set_A = {'a', 'c'}
+print(complement_v2(set_S, set_A))
+>>> var = {}
+>>> type(var)
+<class 'dict'>
+>>> var = set()
+>>> type(var)
+<class 'set'>
+>>> # Warning: Curly braces or the set() function can be used to create sets. 
+>>> # To create an empty set you have to use set(), not {}; the latter creates an empty dictionary.
