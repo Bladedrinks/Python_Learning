@@ -1,0 +1,43 @@
+About mathematical definition about 'set operations', see:
+https://www.probabilitycourse.com/chapter1/1_2_2_set_operations.php
+
+# Union of, say, sets A and B is a set where each element is either in A or in B (possibly both).
+# Unlike math which has only one way of denoting the 'union' operation - A U B, Python has two ways of denoting it: 
+# one is referring to the punctuation mark, |, read 'vertical bar', and the other is using the set.union(other) method.
+>>> A = {'a', 'b', 'c'}
+>>> B = {'c', 'y', 'z'}
+>>> union_of_A_and_B = A | B
+>>> union_of_A_and_B
+{'z', 'b', 'c', 'a', 'y'}
+>>> 
+>>> union_of_A_and_B = A.union(B)
+>>> union_of_A_and_B
+{'z', 'b', 'c', 'a', 'y'}
+>>> 
+>>> A = {1, 2, 3}
+>>> B = {2, 3, 4, 5}
+>>> union = A.union(B)
+>>> union
+{1, 2, 3, 4, 5}
+
+>>> # Notice that we can pass in more than one set as the parameter while using the .union() method. You can check out the official Python documentation on .union() method, which says very clearly: set.union(*other) where the * (asterisk) sign tells us that you can pass in as many arguments as you want.
+... 
+>>> A1 = set(chr(97+i) for i in range(5))
+>>> A1
+{'b', 'e', 'c', 'a', 'd'}
+>>> A2 = set(chr(102+i) for i in range(5))
+>>> A2
+{'h', 'i', 'j', 'f', 'g'}
+>>> A3 = set(chr(107+i) for i in range(5))
+>>> A3
+{'l', 'k', 'o', 'm', 'n'}
+>>> A4 = set(chr(112+i) for i in range(5))
+>>> A4
+{'q', 't', 's', 'r', 'p'}
+>>> A5 = set(chr(117+i) for i in range(5))
+>>> A5
+{'x', 'v', 'y', 'w', 'u'}
+>>> # To compute the union of sets A1, A2, A3, A4 and A5, we call set.union(*others) on those sets.
+... union_of_As = A1.union(A2, A3, A4, A5)
+>>> union_of_As
+{'q', 's', 'x', 'h', 'k', 'm', 'v', 'y', 'r', 'c', 'p', 'b', 'f', 'n', 'g', 't', 'l', 'o', 'i', 'j', 'w', 'e', 'u', 'a', 'd'}
