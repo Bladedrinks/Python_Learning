@@ -41,4 +41,3 @@ for x, y in coords_of_Qs:  # Since each item in the 'coords_of_Qs' list is a 2-t
 # The for loop can be rewritten as a list comprehension:
 # slopes_of_secant_PQ = [round((y_val_of_P - y) / (x_val_of_P - x), 2) for x, y in coords_of_Qs]
 print(f"The slopes of the secant PQ are approximately: {slopes_of_secant_PQ}")
-# Output: [42.5, 45.8333, 50.0, 50.0]
