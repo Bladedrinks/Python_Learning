@@ -1,5 +1,20 @@
 # This is a program to return a list of numbers which are the slopes of secant PQ, or Δy/Δx.
 
+
+def interpolate_and_in(list):
+    """Return a string of comma-separated items from the given list. Between the last and the penultimate items
+    a conjunction 'and' is interpolated."""
+    temp = list.copy()
+    for i in range(-1, -(len(list) + 1), -1):
+        if i == -2:
+            temp[i] = f'{temp[i]} and '
+        else:
+            temp[i] = f'{temp[i]}, '
+            # print(temp[i])
+    str_with_and = ''.join(temp)[:-2]
+    return str_with_and
+
+
 # Ask the user for the x and y coordinates of points Q
 # and add each pair of x-y coordinates as a 2-tuple to a list named 'coords_of_Qs',
 # since we're gonna move point Q toward P along the curve in a bit to arbitrarily graph at least four secant lines PQ1,
@@ -36,4 +51,6 @@ coords_of_P = tuple(float(val) for val in input("Enter the x and y values of poi
 x_val_of_P, y_val_of_P = coords_of_P  # Assign values to t and s of point P using sequence unpacking.
 slopes_of_secant_PQ = list(map(lambda x_of_Q, y_of_Q: round((y_val_of_P - y_of_Q) / (x_val_of_P - x_of_Q), 2),
                                x_vals_of_Q, y_vals_of_Q))
-print(f"The slopes of the secant PQ are approximately: {slopes_of_secant_PQ}")
+names_of_PQ = [f'PQ{n}' for n in range(1, c+1)]
+print(f"The slopes of the secants {interpolate_and_in(names_of_PQ)} are approximately "
+      f"{interpolate_and_in(slopes_of_secant_PQ)}")
