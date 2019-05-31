@@ -17,7 +17,9 @@ def interpolate_and_in(list):
 
 
 # Display the x and y values of the moving point Q, respectively.
-x_vals = list(map(lambda h: 1 + h, [1 / pow(10, n) for n in range(1, 7)]))
+x_vals = list(map(lambda h: 1 + h, [0.1 * pow(0.1, n-1) for n in range(1, 7)]))
+# The values of h approaching zero (i.e., 0.1, 0.01, 0.001, 0.0001, 1.00001, 1.000001) are a geometric sequence whose
+# first item a=0.1, the common ratio r=1/10=0.1, and the rule is Xn = a * r^(n-1) = 0.1 * [0.1^(n-1)].
 y_vals = list(map(lambda x: round(math.sqrt(x), 10), x_vals))
 print(f"\nThe x values of point Q are {interpolate_and_in(x_vals)}"
       f"\nThe y values of point Q are {interpolate_and_in(y_vals)}", end='\n\n')
