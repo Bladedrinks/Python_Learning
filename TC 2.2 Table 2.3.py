@@ -6,6 +6,7 @@
 # the function appears to approach 0 .
 # This is a bit too weird since generally as the values of x approach some number, the function value is gonna be
 # approaching a single value, not two values.
+# Is the answer 0.05 or 0? This problem can be solved in the following chapter of the book.
 # The book believes that computer should be blamed for this 'error'.
 
 # ====== Source Code ======
