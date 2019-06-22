@@ -1,0 +1,25 @@
+This file explains why round(number, None) and round(number, 0) return different values - one is an integer
+and the other is a floating number which is equal to that integer if removed the fractional part.
+
+The following lines are an example illustrating the "weird" phenomenon mentioned above:
+>>> round(2.3, 0)
+2.0
+>>> round(2.3)
+2
+
+Without thinking deeply, round(2.3) and round(2.3, 0) should be considered as returning the same value since both round(2.3)
+and round(2.3, 0) make the number of 2.3 rounded to zero decimals (or to zero decimal digits, or to the nearest ones, or the 
+nearest integer), which is 2 .
+
+Let's start with 'round(2.3, 0)'.
+
+In this case, the 'number' parameter is 2.3 and the optional 'ndigits' parameter is 0 .
+
+By the definition of the built-in round() function, we know that "(the) value (of the 'number' parameter) should be rounded to
+the closest multiple of 10 to the power minus 'ndigits'."
+
+In round(2.3, 0), we've passed in 0 as the 'ndigits' parameter, so 10 to the power minus 'ndigits' is equal to 10^(-0) which 
+can also be viewed as 1/10^0 . Since in Python any number that is the result of the division operation is a float, 10^(-0) =
+1/10^0 = 1 / 1 = 1.0
+
+Now based on 1.0, we can find some multiples of 1.0 that are close to 2.3
