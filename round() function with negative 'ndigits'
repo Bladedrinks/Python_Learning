@@ -31,3 +31,11 @@ the number 99.99999 we have -200(=-2*100), -100(=-1*100), 0(=0*100), 100(=1*100)
 of 100 since they are all divisible by 100 or they are all the products of one integer and 100 . Obviously, among those 
 multiples, the one that is closest to 99.99999 is 100 .
 
+>>> round(50.0000, -3)
+0.0
+>>> # By definition, the round(number[, ndigits]) function returns the multiple of 10 to the power of minus 'ndigits' which is the closest to the given 'number'. In this case, 10^(-ndigits) = 10^(-(-3)) = 10^3 = 1000 . Multiples of 1000 that are near the given 'number' of 50.0000 include (but not only include): -1000(=-1*1000), 0(=0*1000), 1000(=1*1000), and 2000(=2*1000).Obviously, we can say that the multiple closest to 50.0000 is 0 .
+... # Why 0.0? Why not 0?
+... # Any difficulty/conundrum arise right after you haven't really understood or remembered the definition of the related concept. So let's go back to the definition of the round() function.
+... # The definition says, "If 'ndigits' is omitted/None, the return value must be an integer. Otherwise, the return value has the same type as 'number'. In this case, the 'ndigits' is not omitted, so the return value has the same value as the 'number' of 50.0000, which is float.
+... # That's why it returns 0.0 (a float data-type), rather than 0 (an integer data-type).
+... 
