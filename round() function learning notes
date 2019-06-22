@@ -35,3 +35,34 @@ Then, let's talk about 'round(2.3)' .
 The definition of the round() function tells us, "If 'ndigits' is omitted or is None, it returns the nearest integer to its
 input." Therefore, what 'round(2.3) is gonna be returning is an integer, rather than other types of data. It can be either 1 or
 2 or 3 or 4 which are all integers close to 2.3. Among them, the nearest one is obviously 2 .
+
+Other examples:
+>>> round(1)
+1
+>>> round(1, 0)
+1
+>>> round(3.49)
+3
+>>> round(3.49, 0)
+3.0
+>>> round(9999)
+9999
+>>> round(9999, 0)
+9999
+>>> round(9999.5)
+10000
+>>> round(9999.5, 0)
+10000.0
+>>> round(9999.58)
+10000
+>>> round(9999.58, 0)
+10000.0
+>>> round(9999.49)
+9999
+>>> round(9999.49, 0)
+9999.0
+>>> round(9998.5)
+9998
+>>> round(9998.5, 0)
+9998.0
+>>> 
