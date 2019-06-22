@@ -20,6 +20,18 @@ the closest multiple of 10 to the power minus 'ndigits'."
 
 In round(2.3, 0), we've passed in 0 as the 'ndigits' parameter, so 10 to the power minus 'ndigits' is equal to 10^(-0) which 
 can also be viewed as 1/10^0 . Since in Python any number that is the result of the division operation is a float, 10^(-0) =
-1/10^0 = 1 / 1 = 1.0
+1/10^0 = 1 / 1 = 1.0 
 
-Now based on 1.0, we can find some multiples of 1.0 that are close to 2.3
+Now based on 1.0, we can find some multiples of 1.0 that are close to the given value/number of 2.3, which include (but not 
+only include), 1.0(=1 * 1.0), 2.0(=2 * 1.0), 3.0(=3 * 1.0), 4.0(=4 * 1.0), etc. (b is a multiple of a if and only if b = n * a
+and n is an integer. Say, -9.9 is a multiple of 3.3 simply because -9.9 equals the integer of -3 times 3.3, even though 3.3 is
+not an integer.) 
+
+Among these multiples of 10 to the power minus 'ndigits', the one that is closest to 2.3 is 2.0 since |2.0 - 2.3| < |1.0 - 2.3| 
+< |3.0 - 2.3| < |4.0 - 2.3| .
+
+Then, let's talk about 'round(2.3)' .
+
+The definition of the round() function tells us, "If 'ndigits' is omitted or is None, it returns the nearest integer to its
+input." Therefore, what 'round(2.3) is gonna be returning is an integer, rather than other types of data. It can be either 1 or
+2 or 3 or 4 which are all integers close to 2.3. Among them, the nearest one is obviously 2 .
