@@ -27,8 +27,18 @@ def fn_expression(a, b, c, d, e, f):
                             dx^2 + ex + f
 
     where a, b, c, d, e and f are the coefficients of the terms of polynomials on top and bottom.
+
+    Example:
+
+    If the function is defined as:
+
+                            x^2 + 3x + 2
+                          -----------------
+                               -x + 2
+
+    , we have to pass in '1, 3, 2, 0, -1, 2' as the parameter where the delimiter is one comma and one whitespace.
     """
-    return lambda x: (a*x**2 + b*x + c) / (d*x**2 + e*abs(x) + f)
+    return lambda x: (a*x**2 + b*x + c) / (d*x**2 + e*x + f)
 
 
 def fn_value(fn_expression, x, n):
@@ -57,7 +67,12 @@ print(f"y-values at x-values from right: {y_values_at_x_values_from_right}")
 table_of_fn_and_x = list(map(lambda x_left, y_left, x_right, y_right: (x_left, y_left, x_right, y_right),
                              x_values_from_left, y_values_at_x_values_from_left,
                              x_values_from_right, y_values_at_x_values_from_right))
-print("Table of the values of G(x) as x approaches -6 from both sides:")
+
+lengths_of_items_in_y_left = [len(str(num)) for num in y_values_at_x_values_from_left]
+print(f"\nTable of the values of G(x) as x approaches {X0} from both sides:")
 for x_left, y_left, x_right, y_right in table_of_fn_and_x:
-    print(f"{x_left}{' '*(len(str(x_values_from_left[-1]))-len(str(x_left)))}", round(y_left, 9),
-          f"{x_right}{' '*(len(str(x_values_from_right[-1]))-len(str(x_right)))}", round(y_right, 9), sep='  ')
+    print(f"{x_left}{' ' * (len(str(x_values_from_left[-1])) - len(str(x_left)))}",
+          f"{round(y_left, 9)}{' ' * (max(lengths_of_items_in_y_left) - len(str(round(y_left, 9))))}",
+          f"{x_right}{' '*(len(str(x_values_from_right[-1]))-len(str(x_right)))}", round(y_right, 9), sep=' ')
+if round(y_values_at_x_values_from_left[-1], 3) == round(y_values_at_x_values_from_right[-1], 3):
+    print(f"\nThe limit of the function value as x approaches {X0} is: {round(y_values_at_x_values_from_left[-1], 3)}")
