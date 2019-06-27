@@ -68,11 +68,28 @@ table_of_fn_and_x = list(map(lambda x_left, y_left, x_right, y_right: (x_left, y
                              x_values_from_left, y_values_at_x_values_from_left,
                              x_values_from_right, y_values_at_x_values_from_right))
 
+# Make a list of the lengths (or the numbers of digits) of x_values approaching X0 from the left and return the length
+# result which is gonna be used to make the table look neat and clear:
+lengths_of_items_in_x_left = [len(str(num)) for num in x_values_from_left]
+
+# Make a list of the lengths (or the numbers of digits) of x_values approaching X0 from the right and return the length
+# result which is gonna be used to make the table look neat and clear:
+lengths_of_items_in_x_right = [len(str(num)) for num in x_values_from_right]
+
+# Make a list of the lengths (or the numbers of digits) of y_values as x approaches X0 from left and return the length
+# result which is gonna be used to make the table look neat and clear:
 lengths_of_items_in_y_left = [len(str(num)) for num in y_values_at_x_values_from_left]
-print(f"\nTable of the values of G(x) as x approaches {X0} from both sides:")
+
+# Make a table of the function values as X approaches X0 from both sides:
+print(f"\nTable of the function values as x approaches {X0} from both sides:", end='\n\n')
+print(f"x(left){' ' * (max(lengths_of_items_in_x_left) - len('x(left)') + 1)} "
+      f"y(left){' ' * (max(lengths_of_items_in_y_left) - len('y(left)') + 1)} "
+      f"x(right){' ' * (max(lengths_of_items_in_x_right) - len('x(right)') + 1)} "
+      f"y(right)")
 for x_left, y_left, x_right, y_right in table_of_fn_and_x:
-    print(f"{x_left}{' ' * (len(str(x_values_from_left[-1])) - len(str(x_left)))}",
-          f"{round(y_left, 9)}{' ' * (max(lengths_of_items_in_y_left) - len(str(round(y_left, 9))))}",
-          f"{x_right}{' '*(len(str(x_values_from_right[-1]))-len(str(x_right)))}", round(y_right, 9), sep=' ')
+    print(f"{x_left}{' ' * (max(lengths_of_items_in_x_left) - len(str(x_left)))}",
+          f"{round(y_left, 6)}{' ' * (max(lengths_of_items_in_y_left) - len(str(round(y_left, 6))))}",
+          f"{x_right}{' '* (max(lengths_of_items_in_x_right)-len(str(x_right)))}",
+          round(y_right, 6), sep='  ')
 if round(y_values_at_x_values_from_left[-1], 3) == round(y_values_at_x_values_from_right[-1], 3):
     print(f"\nThe limit of the function value as x approaches {X0} is: {round(y_values_at_x_values_from_left[-1], 3)}")
