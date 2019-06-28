@@ -67,12 +67,5 @@ for x_left, y_left, x_right, y_right in table_of_fn_and_x:
     print(f"{x_left}{' ' * (max(lengths_of_items_in_x_left) - len(str(x_left)))}",
           f"{y_left}{' ' * (max(lengths_of_items_in_y_left) - len(str(y_left)))}",
           f"{x_right}{' '* (max(lengths_of_items_in_x_right)-len(str(x_right)))}", y_right, sep='  ')
-if int(y_values_at_x_values_from_left[-1]) > int(y_values_at_x_values_from_left[0]) \
-        and int(y_values_at_x_values_from_right[-1]) > int(y_values_at_x_values_from_right[0]):
-    if y_values_at_x_values_from_left[-1] > 0 and y_values_at_x_values_from_right[-1] > 0:
-        print(f"\nThe limit of the function value as x approaches {X0} is: infinity")
-    else:
-        print(f"\nThe limit of the function value as x approaches {X0} is: -infinity")
-else:
-    # round(y_values_at_x_values_from_left[-1], 3) == round(y_values_at_x_values_from_right[-1], 3)
+if round(y_values_at_x_values_from_left[-1], 3) == round(y_values_at_x_values_from_right[-1], 3):
     print(f"\nThe limit of the function value as x approaches {X0} is: {round(y_values_at_x_values_from_left[-1], 5)}")
