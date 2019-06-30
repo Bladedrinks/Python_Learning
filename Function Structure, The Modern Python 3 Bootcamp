@@ -8,3 +8,30 @@ run the code by simply defining a function, which is just a definition, rather t
 "paren" is the abbrevation of "parenthesis".
 "parens" is its plural form, pronounced like "pah-ren-ts".
 The 's' letter at the end of word has the same pronunciation as the 's' in the word "happens".
+
+When a car gets bogged down in the mud, it is stuck or sinks in the wet ground and can not get
+out of the mud by itself.
+
+When people get bogged down in details, they don't make any progress simply because some 
+problems with the details have not been fixed.
+
+The phrase "bog down" might be pronounced like "bogown" where the "d" sound has been
+assimilated into the preceding "g" sound. This is called "assimilation" in phonology.
+
+>>> def cube_of_3():
+...     """Return the cube of number 3."""
+...     3**3
+... 
+>>> print(cube_of_3())
+None
+>>> # Since we didn't type the keyword "return" in front of the value to bereturned, nothing will be returned when calling the print() function on the UDF cube_of_3(). 
+... 
+>>> # To fix the problem, we need to add the keyword "return" before any value we want to return.
+... def cube_of_3():
+...     """Return the cube of number 3."""
+...     return 3**3
+... 
+>>> print(cube_of_3())
+27
+>>> # Now we got the value that has to be returned as we expected. Keep in mind: Never let computers guess what you want them to do. You have to be very explicit when you want them to execute some task.
+... 
