@@ -1,0 +1,19 @@
+# programming language list
+language = ['Python', 'Java', 'C++', 'Ruby', 'C']
+
+# When index is not passed
+print('When index is not passed:') 
+print('Return Value: ', language.pop())  # When the 'index' parameter is omitted or not given, the default index is -1, that is, the last item/element in the list, which in this case is 'C'. 'C' is removed and returned.
+print('Updated List: ', language)  # The updated list looks like this: ['Python', 'Java', 'C++', 'Ruby']
+
+# When -1 is passed
+# Pops Last Element
+print('\nWhen -1 is passed:') 
+print('Return Value: ', language.pop(-1))  # When the index is -1, the list.pop() method will remove and return the last item in the list. In this case, since the 'language' list has been mutated IN PLACE, the last item is not 'C' any more; it's 'Ruby' right now. So 'Ruby' will be returned. 
+print('Updated List: ', language)  # And the updated list looks like this: ['Python', 'Java', 'C++']
+
+# When -3 is passed
+# Pops Third Last Element
+print('\nWhen -3 is passed:')  
+print('Return Value: ', language.pop(-3))  # When we pass -3 to the method, the third last item in the updated list wil be removed and returned. So 'Python' will be returned here.
+print('Updated List: ', language)  # And the updated list looks like this:  ['Java', 'C++'] since the third last item (also the first item) is 'Python'.
