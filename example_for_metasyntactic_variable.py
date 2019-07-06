@@ -3,6 +3,12 @@
 # 'foo', 'fum', 'bar', 'foobar', 'qux', 'spam', 'ham', 'egg', 'ham egg', etc. (By the way, 'metasyntactic variable'
 # literally means 'the variables that are beyond the syntax of (a specific programming language, say, Python')
 
+# When do we use "metasyntactic variables"?
+# For example, when you are teaching students how to define a function that returns the sum of two squares and you don't
+# know how to name that function properly at the time, and don't want to spend time on function naming, then you can use
+# "metasyntactic variables" (say, 'foo', 'bar', 'foobar', 'spam', 'ham', 'egg', etc.) to name the function temporarily.
+# You and your students both know that these "nonsense" function names are just placeholders to be used for helping us
+# complete the teaching goal - how to define a function returning the sum of two squares.
 
 # Here's an example for illustrating in what kind of situation we use metasyntactic variables.
 
@@ -21,3 +27,24 @@ def foo():
 
 # Define a function named 'fum'
 def fum():
+    """Print out three lines of string. Each line of words starts with the metasyntactic variable name 'fum'."""
+    print("fum line 1")
+    print("fum line 2")
+    print("fum line 3")
+
+
+def bar():
+    """Print out two lines of string. Each line of words starts with the metasyntactic variable names 'bar'.
+    and invoke the functions foo() and fum() defined above."""
+    print("bar line 1")
+    foo()
+    fum()
+    print("bar line 4")
+
+
+def go():
+    """Invoke the function bar() defined right above."""
+    bar()
+
+
+go()
